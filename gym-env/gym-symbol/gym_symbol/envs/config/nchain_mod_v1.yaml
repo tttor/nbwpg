@@ -1,0 +1,203 @@
+# Unichain MDP with 2 transient states, s0 and s1
+
+tmix:
+  upperbound: 45
+  rtol: 1e-5
+  atol: 1e-6
+  txep_for_trial: 100
+
+deterministic_policy:
+  approx_smallest_gammablackwell: 0.85
+  g_min: 0.7324675324675323
+  g_max: 3.676800000000001
+  gain_min: 0.7324675324675323
+  gain_max: 3.676800000000001
+  bs0_min: -14.460800000000008
+  bs0_max: 15.87076923076923
+  bs0_gainmax:
+    - -7.460800000000008
+    - -14.460800000000008
+    - -2.460800000000006
+    - -9.460800000000008
+  bs0max_gainmax: -2.460800000000006
+  ds0_0.99_min: 0.7708114683853473
+  ds0_0.99_max: 365.6282153557195
+  ds0_0.99900000_min: 0.7362894087898821
+  ds0_0.99900000_max: 3674.3806865132465
+  ds0_0.99990000_min: 0.7328495940465722
+  ds0_0.99990000_max: 36765.543354574635
+  ds0_0.99999000_min: 0.7325057373660888
+  ds0_0.99999000_max: 367677.53961792507
+  ds0_0.00_min: 5.0
+  ds0_0.05_min: 4.798500019859395
+  ds0_0.10_min: 4.594001230474923
+  ds0_0.15_min: 4.386513544930289
+  ds0_0.20_min: 4.176073406333447
+  ds0_0.25_min: 3.9627695417789752
+  ds0_0.30_min: 3.74677303506688
+  ds0_0.35_min: 3.52836797444513
+  ds0_0.40_min: 3.307979060690982
+  ds0_0.45_min: 3.086192956869785
+  ds0_0.50_min: 2.863770844540075
+  ds0_0.55_min: 2.6416505863404476
+  ds0_0.60_min: 2.4194826586389926
+  ds0_0.65_min: 2.197572420648006
+  ds0_0.70_min: 1.9772719614620085
+  ds0_0.75_min: 1.7593384697130714
+  ds0_0.80_min: 1.544547562667355
+  ds0_0.85_min: 1.3336837677480526
+  ds0_0.90_min: 1.127532161743187
+  ds0_0.95_min: 0.9268713082310656
+  ds0_0.00_max: 10.0
+  ds0_0.05_max: 10.404210526500329
+  ds0_0.10_max: 10.817777790655073
+  ds0_0.15_max: 11.24235310188782
+  ds0_0.20_max: 11.680000994742494
+  ds0_0.25_max: 12.133338281134035
+  ds0_0.30_max: 12.605739015637123
+  ds0_0.35_max: 13.101625289018765
+  ds0_0.40_max: 13.626917842611029
+  ds0_0.45_max: 14.18973186332539
+  ds0_0.50_max: 14.801499250374812
+  ds0_0.55_max: 15.48003259586555
+  ds0_0.60_max: 16.25396761394102
+  ds0_0.65_max: 17.16656171643125
+  ds0_0.70_max: 18.294126786206895
+  ds0_0.75_max: 19.924
+  ds0_0.80_max: 22.403349661538464
+  ds0_0.85_max: 26.965623552000004
+  ds0_0.90_max: 37.85425868800002
+  ds0_0.95_max: 72.99498214399998
+
+
+randomized_policy:
+  gain_star_eps1e-2_res0.1: 3.27385953
+
+state_list:
+  - state_name: s0
+    init_prob: 1
+    action_list:
+    - action_name: a0_0
+      nextstate_list:
+      - name: s1
+        reward: 5
+        prob: 1
+    - action_name: a0_1
+      nextstate_list:
+      - name: s1
+        reward: 10
+        prob: 1
+
+  - state_name: s1
+    init_prob: 0
+    action_list:
+    - action_name: a1_0
+      nextstate_list:
+      - name: s2
+        reward: 8
+        prob: 1
+    - action_name: a1_1
+      nextstate_list:
+      - name: s2
+        reward: 1
+        prob: 1
+
+  - state_name: s2
+    init_prob: 0
+    action_list:
+    - action_name: a2_0
+      nextstate_list:
+      - name: s3
+        reward: 0
+        prob: 0.8
+      - name: s2
+        reward: 2
+        prob: 0.2
+    - action_name: a2_1
+      nextstate_list:
+      - name: s3
+        reward: 0
+        prob: 0.2
+      - name: s2
+        reward: 2
+        prob: 0.8
+
+  - state_name: s3
+    init_prob: 0
+    action_list:
+    - action_name: a3_0
+      nextstate_list:
+      - name: s4
+        reward: 0
+        prob: 0.8
+      - name: s2
+        reward: 2
+        prob: 0.2
+    - action_name: a3_1
+      nextstate_list:
+      - name: s4
+        reward: 0
+        prob: 0.2
+      - name: s2
+        reward: 2
+        prob: 0.8
+
+  - state_name: s4
+    init_prob: 0
+    action_list:
+    - action_name: a4_0
+      nextstate_list:
+      - name: s5
+        reward: 0
+        prob: 0.8
+      - name: s2
+        reward: 2
+        prob: 0.2
+    - action_name: a4_1
+      nextstate_list:
+      - name: s5
+        reward: 0
+        prob: 0.2
+      - name: s2
+        reward: 2
+        prob: 0.8
+
+  - state_name: s5
+    init_prob: 0
+    action_list:
+    - action_name: a5_0
+      nextstate_list:
+      - name: s6
+        reward: 0
+        prob: 0.8
+      - name: s2
+        reward: 2
+        prob: 0.2
+    - action_name: a5_1
+      nextstate_list:
+      - name: s6
+        reward: 0
+        prob: 0.2
+      - name: s2
+        reward: 2
+        prob: 0.8
+
+  - state_name: s6
+    init_prob: 0
+    action_list:
+    - action_name: a6_0
+      nextstate_list:
+      - name: s6
+        reward: 10
+        prob: 0.8
+      - name: s2
+        reward: 2
+        prob: 0.2
+    - action_name: a6_1
+      nextstate_list:
+      - name: s6
+        reward: 10
+        prob: 0.2
+      - name: s2
+        reward: 2
+        prob: 0.8

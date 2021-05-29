@@ -1,0 +1,11 @@
+fisher_mode: fisher_transient_withsteadymul_upto_t1
+
+resolution: 0.1
+
+wxmin: -10.
+wxmax: +10.
+wymin: -10.
+wymax: +10.
+round_decimal: 8
+
+seed: 12345678

@@ -1,0 +1,176 @@
+# Sensitivity-Analysis in Discounted Markovian Decision Problems
+# A. Hordijk,  R. Dekker, and L. C. M. KaUenberg
+# Sec 3.5, p148
+
+# Differs to v3 in terms of
+  # reward structure in transient states
+
+tmix:
+  upperbound: 17
+  rtol: 1e-5
+  atol: 1e-6
+  txep_for_trial: 100
+
+deterministic_policy:
+  approx_smallest_gammablackwell: 0.80
+  g_min: 8.620689655172415
+  g_max: 13.344537815126051
+  gain_min: 8.620689655172415
+  gain_max: 13.344537815126051
+  bs0_min: -1.683195592286502
+  bs0_max: 35.906666666666666
+  bs0_gainmax: # 4 policies
+   - 16.36600522561966
+   - -0.28945695925428794
+  bs0max_gainmax: 16.36600522561966 # 2 policies
+  ds0_min: 8.6
+  ds0_max: 13.5
+  ds0_0.99_min: 8.758222115999306
+  ds0_0.99_max: 1350.7061332713092
+  ds0_0.99999000_min: 8.620827146312624
+  ds0_0.99999000_max: 1334470.147408373
+  ds0_0.99999999_min: 8.620689798612569
+  ds0_0.99999999_max: 1334453788.942214
+  ds0_0.00_min: 5.0
+  ds0_0.05_min: 7.13305913125257
+  ds0_0.10_min: 9.037004188935432
+  ds0_0.15_min: 10.71793821964031
+  ds0_0.20_min: 12.181384863123995
+  ds0_0.25_min: 13.432186234817815
+  ds0_0.30_min: 14.474643796168772
+  ds0_0.35_min: 15.312597874466345
+  ds0_0.40_min: 15.949493433395872
+  ds0_0.45_min: 16.388434792489278
+  ds0_0.50_min: 15.764462809917354
+  ds0_0.55_min: 14.992611555222846
+  ds0_0.60_min: 14.240631491483171
+  ds0_0.65_min: 13.507218563100917
+  ds0_0.70_min: 12.791194659860606
+  ds0_0.75_min: 12.091492537313433
+  ds0_0.80_min: 11.399999999999999
+  ds0_0.85_min: 10.697661469933182
+  ds0_0.90_min: 10.001233118027013
+  ds0_0.95_min: 9.309343691012046
+  ds0_0.00_max: 25.0
+  ds0_0.05_max: 25.42557636472804
+  ds0_0.10_max: 25.907650614967686
+  ds0_0.15_max: 26.4562182239667
+  ds0_0.20_max: 27.087406015037594
+  ds0_0.25_max: 27.818518518518516
+  ds0_0.30_max: 28.673151173151172
+  ds0_0.35_max: 29.682550052687038
+  ds0_0.40_max: 30.888888888888886
+  ds0_0.45_max: 32.35035907142459
+  ds0_0.50_max: 34.574675324675326
+  ds0_0.55_max: 38.78897156350184
+  ds0_0.60_max: 43.64924712134632
+  ds0_0.65_max: 49.446902401283744
+  ds0_0.70_max: 56.6903460837887
+  ds0_0.75_max: 66.30354391371341
+  ds0_0.80_max: 80.25079365079367
+  ds0_0.85_max: 103.31060502306792
+  ds0_0.90_max: 148.5393116093008
+  ds0_0.95_max: 282.6581748572142
+
+state_list:
+  - state_name: s0
+    init_prob: 1
+    action_list:
+    - action_name: a0_0
+      nextstate_list:
+      - name: s1
+        reward: 5
+        prob: 1
+    - action_name: a0_1
+      nextstate_list:
+      - name: s2
+        reward: 25
+        prob: 1
+  - state_name: s1
+    init_prob: 0
+    action_list:
+    - action_name: a1_0
+      nextstate_list:
+      - name: s2
+        reward: 50
+        prob: 1
+    - action_name: a1_1 # duplicate
+      nextstate_list:
+      - name: s2
+        reward: 50
+        prob: 1
+
+  - state_name: s2
+    init_prob: 0
+    action_list:
+    - action_name: a2_0
+      nextstate_list:
+      - name: s2
+        reward: 8
+        prob: 0.5
+      - name: s3
+        reward: 8
+        prob: 0.25
+      - name: s4
+        reward: 8
+        prob: 0.25
+    - action_name: a2_1
+      nextstate_list:
+      - name: s2
+        reward: 2.75
+        prob: 0.0625
+      - name: s3
+        reward: 2.75
+        prob: 0.75
+      - name: s4
+        reward: 2.75
+        prob: 0.1875
+
+  - state_name: s3
+    init_prob: 0
+    action_list:
+    - action_name: a3_0
+      nextstate_list:
+      - name: s2
+        reward: 16
+        prob: 0.5
+      - name: s4
+        reward: 16
+        prob: 0.5
+    - action_name: a3_1
+      nextstate_list:
+      - name: s2
+        reward: 15
+        prob: 0.0625
+      - name: s3
+        reward: 15
+        prob: 0.875
+      - name: s4
+        reward: 15
+        prob: 0.0625
+
+  - state_name: s4
+    init_prob: 0
+    action_list:
+    - action_name: a4_0
+      nextstate_list:
+      - name: s2
+        reward: 7
+        prob: 0.25
+      - name: s3
+        reward: 7
+        prob: 0.25
+      - name: s4
+        reward: 7
+        prob: 0.5
+    - action_name: a4_1
+      nextstate_list:
+      - name: s2
+        reward: 4
+        prob: 0.125
+      - name: s3
+        reward: 4
+        prob: 0.75
+      - name: s4
+        reward: 4
+        prob: 0.125

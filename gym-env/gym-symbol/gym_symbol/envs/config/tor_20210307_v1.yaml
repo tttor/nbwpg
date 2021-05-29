@@ -1,0 +1,89 @@
+# Inspired by Puterman, Example 10.0.1 (p493)
+tmix:
+  upperbound: 3
+  rtol: 1e-5
+  atol: 1e-6
+  txep_for_trial: 100
+
+deterministic_policy:
+  approx_smallest_gammablackwell: 0.55
+  g_min: 0
+  g_max: 0
+  gain_min: 0
+  gain_max: 0.0 # all deterministic policies
+  bs0_min: 2.0
+  bs0_max: 6.0
+  bs0max_gainmax: 6.0
+  ds0_min: 0
+  ds0_max: 0
+
+state_list:
+  - state_name: s0
+    init_prob: 1
+    action_list:
+    - action_name: a0_0
+      nextstate_list:
+      - name: s1
+        reward: 1
+        prob: 1
+    - action_name: a0_1
+      nextstate_list:
+      - name: s2
+        reward: 0
+        prob: 1
+
+  - state_name: s1
+    init_prob: 0
+    action_list:
+    - action_name: a1_0
+      nextstate_list:
+      - name: s3
+        reward: 1
+        prob: 1
+    - action_name: a1_1 # duplicate
+      nextstate_list:
+      - name: s3
+        reward: 1
+        prob: 1
+  - state_name: s2
+    init_prob: 0
+    action_list:
+    - action_name: a2_0
+      nextstate_list:
+      - name: s3
+        reward: 3
+        prob: 1
+    - action_name: a2_1 # duplicate
+      nextstate_list:
+      - name: s3
+        reward: 3
+        prob: 1
+
+  - state_name: s3
+    init_prob: 0
+    action_list:
+    - action_name: a3_0
+      nextstate_list:
+      - name: s4
+        reward: 3
+        prob: 1
+    - action_name: a3_1
+      nextstate_list:
+      - name: s4
+        reward: 0
+        prob: 1
+
+  - state_name: s4
+    init_prob: 0
+    action_list:
+    - action_name: a4_0
+      nextstate_list:
+      - name: s4
+        reward: 0
+        prob: 1
+    - action_name: a4_1 # duplicate
+      nextstate_list:
+      - name: s4
+        reward: 0
+        prob: 1
+

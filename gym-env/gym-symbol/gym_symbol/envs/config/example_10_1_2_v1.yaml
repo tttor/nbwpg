@@ -1,0 +1,55 @@
+# Puterman, p500, ex 10.1.2
+# with modification: s1 has 2 identical self-loop actions, instead of one,
+
+tmix:
+  upperbound: 20
+  rtol: 1e-5
+  atol: 1e-6
+  txep_for_trial: 100
+
+deterministic_policy:
+  approx_smallest_gammablackwell: 0.95
+  g_min: -1.0
+  g_max: -1.0
+  gain_min: -1.0
+  gain_max: -1.0
+  bs0_min: 11.0
+  bs0_max: 12.0
+  bs0_gainmax:
+    - 12.0
+    - 11.0
+  bs0max_gainmax: 12.0
+  ds0_min: -1.0
+  ds0_max: -1.0
+
+state_list:
+  - state_name: s0
+    init_prob: 1
+    action_list:
+    - action_name: a0_0
+      nextstate_list:
+      - name: s0
+        reward: 5
+        prob: 0.5
+      - name: s1
+        reward: 5
+        prob: 0.5
+    - action_name: a0_1
+      nextstate_list:
+      - name: s1
+        reward: 10
+        prob: 1
+
+  - state_name: s1
+    init_prob: 0 # because s1 is absorbing
+    action_list:
+    - action_name: a1_0 # 1st self-loop
+      nextstate_list:
+      - name: s1
+        reward: -1
+        prob: 1
+    - action_name: a1_1 # 2nd self-loop
+      nextstate_list:
+      - name: s1
+        reward: -1
+        prob: 1

@@ -1,0 +1,11 @@
+name: nbwpgmain
+channels:
+  - conda-forge
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8.5
+  - pytorch=1.7.0=py3.8_cpu_0
+  - pyyaml=5.3.1
+  - pathos=0.2.7
+  - gitpython=3.1.14

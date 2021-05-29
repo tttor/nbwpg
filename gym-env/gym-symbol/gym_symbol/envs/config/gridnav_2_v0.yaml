@@ -1,0 +1,106 @@
+# State is represented by 2-tuple coordinate (x=horizontalaxis, y=verticalaxis).
+# Origin (0, 0) is at bottom-left.
+
+tmix:
+  upperbound: 212
+  rtol: 1e-5
+  atol: 1e-6
+  txep_for_trial: 100
+# 1dimstate: sigmoid
+  # mean 88.16643152397218
+  # min 14.0 max 212.0
+# 2dimstate: softmax
+  # mean 72.52035840697012
+  # min 13.0 max 263.0
+
+deterministic_policy:
+  approx_smallest_gammablackwell: 0.05
+  g_min: 0
+  g_max: 0
+  gain_min: 0
+  gain_max: 0 # all 16 policies
+  bs0_min: -17.00000000000001
+  bs0_max: 0.7777777777777775
+  # bs0_gainmax: # all 16 policies
+  bs0max_gainmax: 0.7777777777777775 # 4 policies
+  ds0_min: 0
+  ds0_max: 0
+
+state_list: # ordered in row major from bottom-left Origin
+  - state_name: s00
+    init_prob: 1 # the only start grid
+    class_under_all_policies: transient
+    action_list:
+    - action_name: a00_0 # east
+      nextstate_list:
+      - name: s10
+        reward: -1
+        prob: 0.9
+      - name: s01
+        reward: -1
+        prob: 0.1
+    - action_name: a00_1 # north
+      nextstate_list:
+      - name: s01
+        reward: -1
+        prob: 0.9
+      - name: s10
+        reward: -1
+        prob: 0.1
+
+  - state_name: s10
+    init_prob: 0
+    class_under_all_policies: transient
+    action_list:
+    - action_name: a10_0 # west
+      nextstate_list:
+      - name: s00
+        reward: -1
+        prob: 0.9
+      - name: s11
+        reward: +2
+        prob: 0.1
+    - action_name: a10_1 # north
+      nextstate_list:
+      - name: s11
+        reward: +2
+        prob: 0.9
+      - name: s00
+        reward: -1
+        prob: 0.1
+
+  - state_name: s01
+    init_prob: 0
+    class_under_all_policies: transient
+    action_list:
+    - action_name: a01_0 # east
+      nextstate_list:
+      - name: s11
+        reward: +2
+        prob: 0.9
+      - name: s00
+        reward: -1
+        prob: 0.1
+    - action_name: a01_1 # south
+      nextstate_list:
+      - name: s00
+        reward: -1
+        prob: 0.9
+      - name: s11
+        reward: +2
+        prob: 0.1
+
+  - state_name: s11
+    init_prob: 0
+    class_under_all_policies: recurrent
+    action_list:
+    - action_name: a11_0 # 1st self-loop
+      nextstate_list:
+      - name: s11
+        reward: 0
+        prob: 1.0
+    - action_name: a11_1 # 2nd self-loop
+      nextstate_list:
+      - name: s11
+        reward: 0
+        prob: 1.0

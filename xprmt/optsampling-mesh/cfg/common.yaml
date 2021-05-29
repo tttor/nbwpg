@@ -1,0 +1,14 @@
+niter: 100
+niter_outer: 1
+minibatch_size: 64
+epsilon: 1e-4
+mixing_at_end_of_xep: True
+
+resolution: 0.5
+wxmin: -10.
+wxmax: +10.
+wymin: -10.
+wymax: +10.
+round_decimal: 8
+print_msg: False
+write_traj: False

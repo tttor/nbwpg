@@ -1,0 +1,14 @@
+wxmin: -10.
+wxmax: +10.
+wymin: -10.
+wymax: +10.
+resolution: 0.1
+round_decimal: 8
+seed: 1234567
+
+# torch.allclose(input, other, rtol=1e-05, atol=1e-08, equal_nan=False) → bool
+# have tried `atol: 1e-06`, but failed in premix diminishing check
+gradbias_cmp_rtol: 1e-05
+gradbias_cmp_atol: 1e-04
+premix_diminishing_rtol: 1e-05
+premix_diminishing_atol: 1e-04

@@ -1,0 +1,96 @@
+tmix:
+  upperbound: 18 # based on empirical results from a parameter-space sweep
+  rtol: 1e-5
+  atol: 1e-6
+  txep_for_trial: 100
+
+deterministic_policy:
+  approx_smallest_gammablackwell: 0.05
+  g_min: 0.6666666666666666
+  g_max: 4.0
+  gain_min: 0.6666666666666666
+  gain_max: 4.0 # np.unique(g_arr) [0.66666667 1.33333333 4.]
+  bs0_min: -3.0
+  bs0_max: 1.1111111111111112 # np.unique(bs0_arr) [-3. -1.  0.22222222  1.11111111]
+  bs0_gainmax:
+    - -3.0
+    - -1.0
+  bs0max_gainmax: -1.0
+  ds0_0.99_min: 0.668896321070234
+  ds0_0.99_max: 398.99999999999966
+  ds0_0.99999000_min: 0.6666688888938291
+  ds0_0.99999999_min: 0.6666666713560512
+  ds0_0.99999000_max: 399999.0000018204
+  ds0_0.99999999_max: 399999996.9900963
+  ds0_0.00_min: 1.0
+  ds0_0.05_min: 0.9756097560975608
+  ds0_0.10_min: 0.9523809523809526
+  ds0_0.15_min: 0.9302325581395349
+  ds0_0.20_min: 0.9090909090909091
+  ds0_0.25_min: 0.8888888888888888
+  ds0_0.30_min: 0.8695652173913044
+  ds0_0.35_min: 0.8510638297872339
+  ds0_0.40_min: 0.8333333333333333
+  ds0_0.45_min: 0.816326530612245
+  ds0_0.50_min: 0.8
+  ds0_0.55_min: 0.7843137254901961
+  ds0_0.60_min: 0.7692307692307692
+  ds0_0.65_min: 0.7547169811320755
+  ds0_0.70_min: 0.7407407407407408
+  ds0_0.75_min: 0.7272727272727273
+  ds0_0.80_min: 0.7142857142857143
+  ds0_0.85_min: 0.7017543859649124
+  ds0_0.90_min: 0.6896551724137929
+  ds0_0.95_min: 0.6779661016949153
+  ds0_0.00_max: 3.0
+  ds0_0.05_max: 3.2105263157894735
+  ds0_0.10_max: 3.4444444444444446
+  ds0_0.15_max: 3.7058823529411766
+  ds0_0.20_max: 4.0
+  ds0_0.25_max: 4.333333333333333
+  ds0_0.30_max: 4.714285714285714
+  ds0_0.35_max: 5.153846153846153
+  ds0_0.40_max: 5.666666666666667
+  ds0_0.45_max: 6.2727272727272725
+  ds0_0.50_max: 7.0
+  ds0_0.55_max: 7.888888888888889
+  ds0_0.60_max: 9.0
+  ds0_0.65_max: 10.428571428571429
+  ds0_0.70_max: 12.333333333333332
+  ds0_0.75_max: 15.0
+  ds0_0.80_max: 19.000000000000004
+  ds0_0.85_max: 25.666666666666664
+  ds0_0.90_max: 39.00000000000001
+  ds0_0.95_max: 78.99999999999993
+
+state_list:
+  - state_name: s0
+    init_prob: 1
+    action_list:
+    - action_name: a0_0
+      nextstate_list:
+      - name: s1
+        reward: 1
+        prob: 1
+    - action_name: a0_1
+      nextstate_list:
+      - name: s1
+        reward: 3
+        prob: 1
+
+  - state_name: s1
+    init_prob: 0
+    action_list:
+    - action_name: a1_0
+      nextstate_list:
+      - name: s0
+        reward: 1
+        prob: 0.5
+      - name: s1
+        reward: 0
+        prob: 0.5
+    - action_name: a1_1
+      nextstate_list:
+      - name: s1
+        reward: 4
+        prob: 1

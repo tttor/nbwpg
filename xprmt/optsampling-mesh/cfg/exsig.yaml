@@ -1,0 +1,7 @@
+envid: gym_symbol:Example_10_1_2-v1
+polnet:
+  mode: OneDimensionStateAndTwoActionPolicyNetwork
+  state_feature_extractor_id: one_dim_state_index
+common: !include common.yaml
+
+logdir: xprmt/bwopt/20210309-optsampling-exsig
