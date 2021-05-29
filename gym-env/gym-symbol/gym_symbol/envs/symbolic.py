@@ -26,16 +26,6 @@ class SymbolicRepresentation(gym.Env):
         self.tmax_xep = None if (self.tmix_upperbound is None) else self.tmix_upperbound
         self.tmax_xep += 5 # plus some TOL to compensate the approx of tmix_upperbound
 
-        # self.transient_stateidx_list = \
-        #     [sidx for sidx, state in enumerate(self.state_list) \
-        #     if state['class_under_all_policies']=='transient']
-        # self.recurrent_stateidx_list = \
-        #     [sidx for sidx, state in enumerate(self.state_list) \
-        #     if state['class_under_all_policies']=='recurrent']
-        # n_tr, n_rc = len(self.transient_stateidx_list), len(self.recurrent_stateidx_list)
-        # if (n_tr > 0) or (n_rc > 0):
-        #     checks.append((n_tr + n_rc)==self.nS)
-
         if not(all(checks)):
             raise RuntimeError('not(all(checks))')
 
@@ -103,12 +93,3 @@ class SymbolicRepresentation(gym.Env):
             fea.append(fea_i)
         fea = np.array(fea); assert fea.ndim==2, fea.ndim
         return fea
-
-    # def get_Rsas(self):
-    #     Rsas = np.zeros((self.nS, self.nA, self.nS))
-    #     for s, state in enumerate(self.state_list):
-    #         for a, action in enumerate(state['action_list']):
-    #             for statenext in action['nextstate_list']:
-    #                 snext = self.statename_list.index(statenext['name'])
-    #                 Rsas[s, a, snext] = statenext['reward']
-    #     return Rsas

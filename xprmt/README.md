@@ -1,8 +1,8 @@
 # nbwpg: experiment
 
 # setup
-* See `main/README.md`
-* Note `logdir` in every config is relative to the home directory
+* See `../main/README.md`
+* Note `logdir` in every config `foo.cfg` is relative to the home directory
 
 # scheme
 * exact optimization

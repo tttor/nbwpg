@@ -1,5 +1,5 @@
 tmix:
-  upperbound: 18 # based on empirical results from a parameter-space sweep
+  upperbound: 18
   rtol: 1e-5
   atol: 1e-6
   txep_for_trial: 100
