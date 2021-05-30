@@ -1,0 +1,13 @@
+envid: gym_symbol:Hordijk_example-v4
+fisher_mode: fisher_transient_withsteadymul_upto_t1
+polnet:
+  mode: OneDimensionStateAndTwoActionPolicyNetwork
+  state_feature_extractor_id: one_dim_state_index
+resolution: 0.1
+round_decimal: 8
+seed: 12345678
+timestamp: 20210402-091543-626718
+wxmax: 10.0
+wxmin: -10.0
+wymax: 10.0
+wymin: -10.0
