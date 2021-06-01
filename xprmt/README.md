@@ -1,11 +1,14 @@
 # nbwpg: experiment
 
-# setup
-* See `../main/README.md`
-* Note `logdir` in every config `foo.cfg` is relative to the home directory
-
 # scheme
-* exact optimization
-* sampling-based optimization
-* environment properties
-* bias gradient decomposition
+There are four experiment schemes, namely
+* `optexact-mesh`: exact optimization,
+* `optsampling-mesh`: sampling-based optimization,
+* `envprop-mesh`: environment properties (including the optimization landscape),
+* `biasgradexact-mesh`: timestep-wise decomposition of the exact gradients of the bias.
+
+# setup
+* Follow `../main/README.md`
+* The `logdir` item in every config `cfg/foo.yaml` (under each scheme)
+  is relative to the home directory.
+
