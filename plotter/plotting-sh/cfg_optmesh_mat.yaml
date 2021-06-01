@@ -1,0 +1,35 @@
+envid: Example_10_1_2-v1
+spec_list:
+  - obj: gainbiasbarrier_0.1
+    conditioner_mode: fisherbiasfisherbarrier
+    minibatch_size: 16
+  - obj: disc_0.95
+    conditioner_mode: fisher_disc
+    epsilon: 1e-4
+
+xticks:
+  - -10.0
+  - -7.5
+  - -5.0
+  - -2.5
+  - 0.
+  - 2.5
+  - 5.0
+  - 7.5
+  - 10.0
+yticks:
+  - -10.0
+  - -7.5
+  - -5.0
+  - -2.5
+  - 0.
+  - 2.5
+  - 5.0
+  - 7.5
+  - 10.0
+
+colorbar_ticks:
+  force: False
+  bias_diff_abs:
+    - 0
+    - 1

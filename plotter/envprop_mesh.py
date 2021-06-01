@@ -10,14 +10,15 @@ def main():
     arg = parse_arg(); logdir = os.path.dirname(arg.cfg)
     with open(arg.cfg, 'r') as f:
         cfg = yaml.load(f); cfg['logdir'] = logdir
-        envcfg_dpath = os.path.join(arg.gymsymboldir, 'gym_symbol/envs/config')
+        envcfg_dpath = os.path.join(arg.gymdir, 'gym-symbol/gym_symbol/envs/config')
         envcfg_fname = cfg['envid'].replace('-', '_').lower() + '.yaml'
         with open(os.path.join(envcfg_dpath, envcfg_fname), 'r') as f2:
             envcfg = yaml.load(f2)
             cfg = {**cfg, **envcfg['deterministic_policy']}
 
     print('loading...')
-    datadir = os.path.join(logdir, 'data', cfg['mesh_dname'])
+    datadir = os.path.join(logdir, 'data') if (arg.data is None) else arg.datadir
+    datadir = os.path.join(datadir, cfg['mesh_dname'])
     meshdata = {}
     for key in ['wxmat', 'wymat'] +  arg.data:
         with open(os.path.join(datadir, key+'.pkl'), 'rb') as f:
@@ -243,7 +244,8 @@ def parse_arg():
     parser.add_argument('--cfg', help='config filepath', type=str, default=None, required=True)
     parser.add_argument('--data', help='data type', type=str, nargs='+', default=None, required=True)
     parser.add_argument('--mode', help='plot mode', type=str, default=None, required=True)
-    parser.add_argument('--gymsymboldir', help='gym-symbol dir, eg `~/gym-symbol`', type=str, required=True)
+    parser.add_argument('--gymdir', help='customized gym-env dir', type=str, required=True)
+    parser.add_argument('--datadir', help='data dir', type=str, default=None)
     parser.add_argument('--show', help='show plot', type=int, default=0)
 
     arg = parser.parse_args()

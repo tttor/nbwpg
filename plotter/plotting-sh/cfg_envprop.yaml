@@ -1,0 +1,50 @@
+envid: Example_10_1_2-v1
+mesh_dname: Example_10_1_2/meshdata_envprop__res0.10__OneDimensionStateAndTwoActionPolicyNetwork__l7480__20210304-043906-075915
+resolution_step: 1
+
+bs0:
+  myv_view_distance: 41
+
+g:
+  myv_view_distance: 40
+
+xticks:
+  - -10.0
+  - -7.5
+  - -5.0
+  - -2.5
+  - 0.
+  - 2.5
+  - 5.0
+  - 7.5
+  - 10.0
+yticks:
+  - -10.0
+  - -7.5
+  - -5.0
+  - -2.5
+  - 0.
+  - 2.5
+  - 5.0
+  - 7.5
+  - 10.0
+
+tmix:
+  colorbar_ticks:
+    - 0
+    - 20
+  colorbar_tick_percentiles:
+    - 0
+    - 25
+    - 50
+    - 75
+  xlim:
+    - -5.0
+    - 205
+  ylim:
+    - -5.0
+    - 205
+  text:
+    size: 50
+    halign: center
+    valign: center

@@ -12,7 +12,7 @@ def main():
     arg = parse_arg()
     with open(os.path.join(arg.cfg), 'r') as f:
         cfg = yaml.load(f)
-        envcfg_dpath = os.path.join(arg.gymsymboldir, 'gym_symbol/envs/config')
+        envcfg_dpath = os.path.join(arg.gymdir, 'gym-symbol/gym_symbol/envs/config')
         envcfg_fname = cfg['envid'].replace('-', '_').lower() + '.yaml'
         with open(os.path.join(envcfg_dpath, envcfg_fname), 'r') as f2:
             envcfg = yaml.load(f2)
@@ -160,7 +160,7 @@ def parse_arg():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--cfg', help='config fpath', type=str, default=None, required=True)
     parser.add_argument('--data', help='data type', type=str, default=None, required=True)
-    parser.add_argument('--gymsymboldir', help='gym-symbol dir, eg `~/gym-symbol`', type=str, required=True)
+    parser.add_argument('--gymdir', help='customized gym-env dir', type=str, required=True)
     parser.add_argument('--cbar', help='colorbar mode', type=int, default=1)
     parser.add_argument('--cbarx', help='colorbar: standalone', type=int, default=0)
     arg = parser.parse_args()
